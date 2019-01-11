@@ -10,9 +10,10 @@ Bugs:
 
 Run this as hts user (sudo su hts):
 ```
+    cd ~
     git clone https://github.com/arneman/tvh_upd_autorec
     cd tvh_upd_autorec
-    bash -c setup.sh
+    /bin/sh ./setup.sh
 ```    
 # Setup #
 
@@ -25,7 +26,7 @@ Run this as hts user (sudo su hts):
 ```
 crontab -l > mycron
 #new cron into cron file
-echo "@reboot sleep 30 && python3 ~/tvh_upd_autorec/main.py" >> mycron
+echo "@reboot sleep 30 && python3 ~/tvh_upd_autorec/main.py > /dev/null" >> mycron
 #install new cron file
 crontab mycron
 rm mycron
