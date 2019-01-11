@@ -4,7 +4,7 @@ Created on Fri Jan 11 13:26:43 2019
 
 Update all autorec entries to delete wrong schedules 
 
-Should by startet after each restart of tvheadend.
+Should be started after each restart of tvheadend.
 
   see https://tvheadend.org/issues/5056
   see https://tvheadend.org/issues/4454
