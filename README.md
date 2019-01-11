@@ -1,20 +1,19 @@
 # What is this? #
 
 This script is for tvheadend.
-It updates all autorec entries to fix/workaround a bug where recording times (start after/start before) will be ignored after a restart of tvheadend
-By updating (without changing) all recordings, the wrong recordings will disappear.
+It updates all autorec entries to fix/workaround a bug where recording times (start after/start before) will be ignored after a restart of tvheadend. By updating (without changing) all autorecs, the wrong schedules will disappear.
 
 Bugs:
-    https://tvheadend.org/issues/5056
-    https://tvheadend.org/issues/4454
+    https://tvheadend.org/issues/5056 and  https://tvheadend.org/issues/4454
 
 # Installation #
 
 Run this as hts user (sudo su hts):
 ```
+    cd ~
     git clone https://github.com/arneman/tvh_upd_autorec
     cd tvh_upd_autorec
-    bash -c setup.sh
+    /bin/sh ./setup.sh
 ```    
 # Setup #
 
@@ -27,7 +26,7 @@ Run this as hts user (sudo su hts):
 ```
 crontab -l > mycron
 #new cron into cron file
-echo "@reboot sleep 30 && python3 ~/tvh_upd_autorec/main.py" >> mycron
+echo "@reboot sleep 30 && python3 ~/tvh_upd_autorec/main.py > /dev/null" >> mycron
 #install new cron file
 crontab mycron
 rm mycron
