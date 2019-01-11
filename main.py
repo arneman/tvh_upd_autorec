@@ -12,7 +12,6 @@ Should by startet after each restart of tvheadend.
 @author: Arne Drees
 """
 
-
 from tvh.htsp import HTSPClient
 import json
 
@@ -67,14 +66,13 @@ if __name__ == '__main__':
     except:
         print('Authentification skipped or failed - go on without auth')
     
-    #update all recordings whithout changing anything
+    #update all recordings without really changing anything
     upd_all()
 
-    #debug:
-    #print list of recordings
+    #debug: print list of recordings
     #print(get_autorecs())
     
-    #update 1 entry only 
+    #debug: update 1 entry only 
     #print(upd_autorec({'uuid': '23e2556c225a08141cdf2c0637484904', 'content_type': 0}))
     
     
