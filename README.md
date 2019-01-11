@@ -8,6 +8,8 @@ Bugs:
 
 # Installation #
 
+You need python3 (```sudo apt-get install python3```) to run this script.
+
 Run this as hts user (sudo su hts):
 ```
     cd ~
