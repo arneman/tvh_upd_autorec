@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Jan 11 13:26:43 2019
-
 Update all autorec entries to delete wrong schedules 
 
 Should be started after each restart of tvheadend.
