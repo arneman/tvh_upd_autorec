@@ -1,17 +1,14 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Jan 11 13:26:43 2019
-
 Update all autorec entries to delete wrong schedules 
 
-Should by startet after each restart of tvheadend.
+Should be started after each restart of tvheadend.
 
   see https://tvheadend.org/issues/5056
   see https://tvheadend.org/issues/4454
 
 @author: Arne Drees
 """
-
 
 from tvh.htsp import HTSPClient
 import json
@@ -70,17 +67,8 @@ if __name__ == '__main__':
     except:
         print('Authentification skipped or failed - go on without auth')
     
-    #update all recordings whithout changing anything
+    #update all recordings without really changing anything
     upd_all()
 
-    #debug:
-    #print list of recordings
+    #debug: print list of recordings
     #print(get_autorecs())
-    
-    #update 1 entry only 
-    #print(upd_autorec({'uuid': '23e2556c225a08141cdf2c0637484904', 'name': 'Panorama'}))
-    
-    
-    
-    
-     
