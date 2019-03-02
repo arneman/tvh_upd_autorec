@@ -23,7 +23,9 @@ def get_autorecs():
     return msg['response']['entries']
 
 def upd_autorec(data):
-    args = { 'node': [ {'uuid': data['uuid'], 'enabled': str(data['enabled'])} ] }
+    #args = { 'node': [ {'uuid': data['uuid'], 'content_type': data['content_type']} ] }
+    args = { 'node': [ {'uuid': data['uuid'], 'minduration': data['minduration_new']} ] }
+
     HTSP.send('api', {
     'path': 'idnode/save',
     'args': args
@@ -34,14 +36,15 @@ def upd_all():
     #get all autorecs
     autorecs = get_autorecs()
     
-    #update all without changing anything    
+    #update all without changing anything
     for autorec in autorecs:
         #print(json.dumps(autorec, indent=4, sort_keys=True))
+        autorec['minduration_new'] = abs(autorec['minduration']//1-1)  #toggle between 1 and 0
         print('updating uuid', autorec['uuid'], autorec['name'])
         upd_autorec(autorec)
 
 if __name__ == '__main__':
-    #read config file    
+    #read config file
     try:
         with open('config.json', 'r') as config_file:
             CONFIG = json.load(config_file)
@@ -51,7 +54,7 @@ if __name__ == '__main__':
                 USER = CONFIG['username']
                 PASSWORD = CONFIG['password']
             except:
-                pass  
+                pass
     except:  #error, use default settings
         print('ERROR: config.json does not exist or is wrong. Use localhost and no auth')
         HOSTNAME='localhost'
@@ -75,7 +78,7 @@ if __name__ == '__main__':
     #print(get_autorecs())
     
     #update 1 entry only 
-    #print(upd_autorec({'uuid': '23e2556c225a08141cdf2c0637484904', 'enabled': 'true'}))
+    #print(upd_autorec({'uuid': '23e2556c225a08141cdf2c0637484904', 'name': 'Panorama'}))
     
     
     
