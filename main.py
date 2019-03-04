@@ -12,7 +12,7 @@ Should be started after each restart of tvheadend.
 
 from tvh.htsp import HTSPClient
 import json
-
+import sys
 
 def get_autorecs():
     HTSP.send('api', {'path': 'dvr/autorec/grid', 'args': {}})
@@ -43,7 +43,7 @@ def upd_all():
 if __name__ == '__main__':
     #read config file
     try:
-        with open('config.json', 'r') as config_file:
+        with open(sys.path[0]+'/config.json', 'r') as config_file:
             CONFIG = json.load(config_file)
             HOSTNAME = CONFIG['hostname']
             #optional: try to read user and password
